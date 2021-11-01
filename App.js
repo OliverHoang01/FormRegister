@@ -1,10 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import Constants from 'expo-constants'; 
 import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';//Thư viện ngoài
+
+
 
 export default function App() {
+
+const [fisrtName , setFisrtName] = useState('')
+const [lastName , setLastName] = useState('')
+const [email , setEmail] = useState('')
+const [pass , setPass] = useState('')
+const [cfPass , setCFPass] = useState('')
+
+function submit() {
+  console.log(fisrtName ,lastName , email ,pass ,cfPass)
+}
   return (
     <>
       <SafeAreaView style={styles.containerTop}>
@@ -18,29 +30,29 @@ export default function App() {
             <Text style={styles.textt}>
               First Name
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} value = {fisrtName} onChangeText ={(text) => setFisrtName(text)}/>
             
             <Text style={styles.textt}>
               Last Name
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} value = {lastName} onChangeText = {(text) => setLastName(text)}/>
 
             <Text style={styles.textt}>
               Email Address
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} value = {email} onChangeText = {(text) => setEmail(text)}/>
 
             <Text style={styles.textt}>
               Password
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} value = {pass} onChangeText = {(text) => setPass(text)} secureTextEntry={true}/>
 
             <Text style={styles.textt}>
               Confirm Password
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} value = {cfPass} onChangeText = {(text) => setCFPass(text)} secureTextEntry={true}/>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={submit}>
               <Text style={{fontSize:18, color: '#fff', fontWeight:'bold'}}>SUBMIT</Text>
             </TouchableOpacity>
           </KeyboardAwareScrollView>
