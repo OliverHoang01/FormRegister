@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import Constants from 'expo-constants'; 
 import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function App() {
   return (
@@ -13,12 +14,7 @@ export default function App() {
       </SafeAreaView>
       <SafeAreaView style={styles.container}>
         <StatusBar style='dark'/>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-          style={{flex :1}}
-        >
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.vContent}>
+        <KeyboardAwareScrollView style={styles.vContent}>
             <Text style={styles.textt}>
               First Name
             </Text>
@@ -47,9 +43,7 @@ export default function App() {
             <TouchableOpacity style={styles.button}>
               <Text style={{fontSize:18, color: '#fff', fontWeight:'bold'}}>SUBMIT</Text>
             </TouchableOpacity>
-          </View>
-          </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+          </KeyboardAwareScrollView>
         
       </SafeAreaView>
       
